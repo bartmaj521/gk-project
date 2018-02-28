@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
-    public Transform Player;
+    public Transform player;
+    public Vector3 offset = new Vector3(3, 10, 0);
+    public float smoothingSpeed = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +20,8 @@ public class CameraMovement : MonoBehaviour {
 
     void LateUpdate()
     {
-        Vector3 position = Player.position;
-        position.y = transform.position.y;
-        position.x -= 3;
-        transform.position = position;
-        transform.LookAt(Player);
+        Vector3 targetPosition = player.position + offset;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smoothingSpeed);
+        transform.LookAt(player);
     }
 }
