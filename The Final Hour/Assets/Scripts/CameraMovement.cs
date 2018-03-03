@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
-    [HideInInspector]
     public Transform player;
     public Vector3 offset = new Vector3(3, 10, 0);
     public float smoothingSpeed = 5;
